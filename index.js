@@ -1,24 +1,17 @@
 'use strict'
 
 class Renovation_house {
+    #price = {
+        'office': 4000,
+        'private_house': 2500,
+        'apartments': 2000
+    }
     constructor(area, type) {
         this.area = area;
         this.type = type;
-        this.price = 0;
-    }
-    price_type(type) {
-        if(type === 'office') {
-            this.price = 4000;
-        }
-        if(type === 'private_house') {
-            this.price = 2500;
-        }
-        if(type === 'apartments') {
-            this.price = 2000;
-        }
     }
     price_area() {
-        return this.area * this.price;
+        return this.area * this.#price[this.type];
     }
     discount() {
         let area = this.area;
@@ -32,7 +25,5 @@ class Renovation_house {
 }
 
 const test = new Renovation_house(21, 'office');
-test.price_type(test.type);
-console.log(`Price per square meter of your type of room: ${test.price}`);
 console.log(`Estimated cost: ${test.price_area()}`);
 console.log(`Total cost including discount: ${test.discount()}`)
